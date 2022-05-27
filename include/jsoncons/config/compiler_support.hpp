@@ -13,6 +13,7 @@
 #include <exception>
 #include <ostream>
 
+// See https://www.fluentcpp.com/2019/05/28/better-macros-better-flags/
 #define JSONCONS(x) JSONCONS_PRIVATE_DEFINITION_##x()
 
 #if defined (__clang__)
