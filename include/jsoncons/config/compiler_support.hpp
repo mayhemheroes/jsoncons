@@ -13,6 +13,8 @@
 #include <exception>
 #include <ostream>
 
+#define JSONCONS(x) JSONCONS_PRIVATE_DEFINITION_##x()
+
 #if defined (__clang__)
 #define JSONCONS_CLANG_VERSION (__clang_major__ * 10000 + __clang_minor__ * 100 + __clang_patchlevel__)
 #endif
@@ -25,8 +27,11 @@
 
 // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=54577
 #if defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ < 9
-#define JSONCONS_NO_ERASE_TAKING_CONST_ITERATOR 1
-#define JSONCONS_NO_MAP_TAKING_ALLOCATOR 1
+#define JSONCONS_PRIVATE_DEFINITION_NO_VECTOR_ERASE_TAKES_CONST_ITERATOR() 1
+#define JSONCONS_PRIVATE_DEFINITION_NO_MAP_CONS_TAKES_ALLOCATOR() 1
+#else
+#define JSONCONS_PRIVATE_DEFINITION_NO_VECTOR_ERASE_TAKES_CONST_ITERATOR() 0
+#define JSONCONS_PRIVATE_DEFINITION_NO_MAP_CONS_TAKES_ALLOCATOR() 0
 #endif
 
 #if defined(__clang__)
