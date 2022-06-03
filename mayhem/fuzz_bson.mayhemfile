@@ -1,0 +1,4 @@
+project: PROJECT
+target: fuzz_bson
+cmds:
+- cmd: /out/fuzz_bson
