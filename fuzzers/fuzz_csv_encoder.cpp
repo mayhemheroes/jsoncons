@@ -12,7 +12,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, std::size_t size)
 
     std::string s2;
     csv_string_encoder visitor(s2);
-    csv_stream_reader reader(is, visitor);
+    csv_stream_reader reader(is, visitor, csv_options{});
     std::error_code ec;
     reader.read(ec);
 
